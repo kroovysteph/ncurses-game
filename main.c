@@ -14,6 +14,8 @@ typedef struct Player {
 //declare functions
 int screenSetUp();
 int mapSetUp();
+int handleInput(int input, Player * user);
+
 Player * playerSetUp();
 
 
@@ -26,8 +28,9 @@ int main(void) {
 	mapSetUp();
 	user = playerSetUp();
 
+	//main game loop
 	while (ch = getch() != 'q') {
-		
+		handleInput(ch, user);
 
 	}
 
@@ -45,7 +48,7 @@ int screenSetUp() {
 	printw("Hello World!");
 	noecho();
 	refresh();
-	return 0;
+	return 1;
 }
 
 
@@ -91,10 +94,53 @@ Player * playerSetUp() {
 }
 
 
+int handleInput(int input, Player * user) {
+
+	switch (input) {
+
+		//move left
+		case 'h':
+		case 'H':
+			playerMove(user->yPosition, user->xPosition - 1, user);
+			break;
+
+		//move down
+		case 'j':
+		case 'J':
+			playerMove(user->yPosition + 1, user->xPosition, user);
+			break;
+
+		//move up
+		case 'k':
+		case 'K':
+			playerMove(user->yPosition - 1, user->xPosition, user);
+			break;
+
+		//move right
+		case 'l':
+		case 'L':
+			playerMove(user->yPosition, user->xPosition + 1, user);
+			break;
+
+		default:
+			break;
 
 
+	}
+
+}
 
 
+int playerMove(int y, int x, Player * user) {
+
+	mvprintw(user->yPosition, user->xPosition, ".");
+
+	user->yPosition = y;
+	user->xPosition = x;
+
+	mvprintw(user->yPosition, user->xPosition, "@");
+	move(user->yPosition, user->xPosition);
+}
 
 
 
