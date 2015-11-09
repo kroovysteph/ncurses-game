@@ -1,2 +1,2 @@
 game: main.c
-	gcc -o game main.c -lncurses
+	gcc -o game main.c -lncurses -Wall
