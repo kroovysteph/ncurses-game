@@ -118,7 +118,18 @@ int drawRoom(Room * room) {
 	//draw top and bottom
 	for (x = room->xPosition; x < room->xPosition + room->width; x++) {
 		mvprintw(room->yPosition, x, "-"); //top
-		mvprintw(room->yPosition + room->height, x, "-"); //bottom
+		mvprintw(room->yPosition + room->height - 1, x, "-"); //bottom
+	}
+
+	//draw floors and side walls
+	for (y = room->yPosition + 1; y < room->yPosition + room->height - 1; y++) {
+		//draw side walls
+		mvprintw(y, room->xPosition, "|");
+		mvprintw(y, room->xPosition + room->width - 1, "|");
+		//draw floors
+		for (x = room->xPosition + 1; x < room->xPosition + room->width - 1; x++) {
+			mvprintw(y, x, ".");
+		}
 	}
 
 	return 1;
