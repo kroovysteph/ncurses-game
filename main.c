@@ -30,7 +30,7 @@ int main(void) {
 	user = playerSetUp();
 
 	//main game loop
-	while (ch = getch() != 'q') {
+	while ((ch = getch()) != 'q') {
 		handleInput(ch, user);
 
 	}
@@ -88,8 +88,7 @@ Player * playerSetUp() {
 	newPlayer->yPosition = 21;
 	newPlayer->health = 20;
 
-	mvprintw(newPlayer->yPosition, newPlayer->xPosition, "@");
-	move(newPlayer->yPosition, newPlayer->xPosition);
+	playerMove(21, 15, newPlayer);
 
 	return newPlayer;
 }
@@ -126,9 +125,8 @@ int handleInput(int input, Player * user) {
 		default:
 			break;
 
-
 	}
-
+	return 0;
 }
 
 
@@ -141,6 +139,8 @@ int playerMove(int y, int x, Player * user) {
 
 	mvprintw(user->yPosition, user->xPosition, "@");
 	move(user->yPosition, user->xPosition);
+
+	return 0;
 }
 
 
