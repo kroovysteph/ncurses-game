@@ -16,6 +16,7 @@ int screenSetUp();
 int mapSetUp();
 int handleInput(int input, Player * user);
 int playerMove(int y, int x, Player * user);
+int checkPosition(int newY, int newX, Player * user);
 
 Player * playerSetUp();
 
@@ -138,8 +139,20 @@ int handleInput(int input, Player * user) {
 	return 0;
 }
 
-
+//check what is at next position
 int checkPosition(int newY, int newX, Player * user) {
+
+	int space;
+	switch (mvinch(newY, newX)) {
+
+		case '.':
+			playerMove(newY, newX, user);
+			break;
+		default:
+			move(user->yPosition, user->xPosition);
+			break;
+
+	}
 
 	return 0;
 }
