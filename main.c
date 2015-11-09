@@ -4,6 +4,15 @@
 const int HEIGHT = 24;
 const int WIDTH = 68;
 
+typedef struct _Room {
+	int xPosition;    // top-left corner
+	int yPosition;    // of the room
+	int height;
+	int width;
+	// Monster ** monsters;
+	// Item ** items;
+} Room;
+
 typedef struct Player {
 	int xPosition;
 	int yPosition;
