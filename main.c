@@ -15,6 +15,7 @@ typedef struct Player {
 int screenSetUp();
 int mapSetUp();
 int handleInput(int input, Player * user);
+int playerMove(int y, int x, Player * user);
 
 Player * playerSetUp();
 
