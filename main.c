@@ -96,38 +96,54 @@ Player * playerSetUp() {
 
 int handleInput(int input, Player * user) {
 
+	int newY;
+	int newX;
 	switch (input) {
 
 		//move left
 		case 'h':
 		case 'H':
-			playerMove(user->yPosition, user->xPosition - 1, user);
+			newY = user->yPosition;
+			newX = user->xPosition - 1;
 			break;
 
 		//move down
 		case 'j':
 		case 'J':
-			playerMove(user->yPosition + 1, user->xPosition, user);
+			newY = user->yPosition + 1;
+			newX = user->xPosition;
 			break;
 
 		//move up
 		case 'k':
 		case 'K':
-			playerMove(user->yPosition - 1, user->xPosition, user);
+			newY = user->yPosition - 1;
+			newX = user->xPosition;
 			break;
 
 		//move right
 		case 'l':
 		case 'L':
-			playerMove(user->yPosition, user->xPosition + 1, user);
+			newY = user->yPosition;
+			newX = user->xPosition + 1;
 			break;
 
 		default:
 			break;
 
 	}
+
+	checkPosition(newY, newX, user);
+
 	return 0;
 }
+
+
+int checkPosition(int newY, int newX, Player * user) {
+
+	return 0;
+}
+
 
 
 int playerMove(int y, int x, Player * user) {
