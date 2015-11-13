@@ -1,2 +1,18 @@
-game: main.c
-	gcc -o game main.c -lncurses -Wall -std=c99
+CC = gcc
+CFLAGS = -lncurses -I$(IDIR)
+
+IDIR = ./include/
+SRCDIR = ./src/
+
+SOURCES = $(SRCDIR)*.c
+
+all: rogue run clean
+
+rogue:
+	$(CC) $(SOURCES) $(CFLAGS) -o $@
+
+run:
+	./rogue
+
+clean:
+	rm rogue
